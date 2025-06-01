@@ -3,20 +3,15 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Deploy only when pushing to the main branch
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+      - main # Or 'master', depending on your default branch name
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      pages: write      # Required to deploy to GitHub Pages
+      id-token: write   # Required for OpenID Connect (OIDC) authentication
+      contents: read    # Required to checkout the repository
 
     steps:
       - name: Checkout repository
@@ -28,7 +23,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."  # The root directory contains index.html
+          # Upload the entire repository content
+          path: './'
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
