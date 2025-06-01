@@ -5,7 +5,6 @@ async function getPredictedLabel(processed_t) {
   // null means stop & wait for the next gesture
   // For now, we will return a random label
   const labels = ["up", "down", "left", "right"];
-  const atia = "atia";
   const randomIndex = Math.floor(Math.random() * labels.length);
   const randomLabel = labels[randomIndex];
   console.log("Predicted label:", randomLabel);
