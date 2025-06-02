@@ -39,6 +39,7 @@ async function getPredictedLabel(processed_t) {
     }
 
     const data = await response.json();
+    console.log("Response from API:", data);
     console.log("Predicted label:", data.gesture_name);
     return data.prediction;
   } catch (error) {
