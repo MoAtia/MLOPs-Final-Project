@@ -25,7 +25,7 @@ async function getPredictedLabel(processed_t) {
     // ✅ Flatten the landmarks before sending
     const formattedInput = flattenLandmarks(processed_t);
 
-    const response = await fetch("https://api.allorigins.win/raw?url=http://mohamedatia.work.gd/predict", {
+    const response = await fetch("https://thingproxy.freeboard.io/fetch/http://mohamedatia.work.gd/predict", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
