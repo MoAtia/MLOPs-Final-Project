@@ -17,6 +17,7 @@ function flattenLandmarks(landmarks) {
     flattened[`y${i + 1}`] = landmarks[i].y;
     flattened[`z${i + 1}`] = landmarks[i].z;
   }
+  console.log(JSON.stringify(flattened))
   return flattened;
 }
 
