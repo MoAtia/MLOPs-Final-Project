@@ -26,7 +26,7 @@ async function getPredictedLabel(processed_t) {
     // ✅ Flatten the landmarks before sending
     const formattedInput = flattenLandmarks(processed_t);
 
-    const response = await fetch("https://maze-game-backend-production.up.railway.app/", {
+    const response = await fetch("https://maze-game-backend-production.up.railway.app/predict", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
