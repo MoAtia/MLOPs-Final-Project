@@ -1,9 +1,11 @@
+
+
 function flattenLandmarks(landmarks) {
   const flattened = {};
   for (let i = 0; i < landmarks.length; i++) {
-    flattened['x${i + 1}'] = landmarks[i].x;
-    flattened['y${i + 1}'] = landmarks[i].y;
-    flattened['z${i + 1}'] = landmarks[i].z;
+    flattened[`x${i + 1}`] = landmarks[i].x;
+    flattened[`y${i + 1}`] = landmarks[i].y;
+    flattened[`z${i + 1}`] = landmarks[i].z;
   }
   return flattened;
 }
