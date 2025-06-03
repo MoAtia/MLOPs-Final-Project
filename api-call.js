@@ -17,7 +17,7 @@ function flattenLandmarks(landmarks) {
     flattened[`y${i + 1}`] = landmarks[i].y;
     flattened[`z${i + 1}`] = landmarks[i].z;
   }
-  console.log(JSON.stringify(flattened))
+  // console.log(JSON.stringify(flattened))
   return flattened;
 }
 
@@ -26,7 +26,7 @@ async function getPredictedLabel(processed_t) {
     // ✅ Flatten the landmarks before sending
     const formattedInput = flattenLandmarks(processed_t);
 
-    const response = await fetch("https://thingproxy.freeboard.io/fetch/http://mohamedatia.work.gd/predict", {
+    const response = await fetch("https://thingproxy.freeboard.io/fetch/http://54.234.11.240/predict", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
