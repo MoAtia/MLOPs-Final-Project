@@ -42,6 +42,21 @@ async function getPredictedLabel(processed_t) {
     const data = await response.json();
     console.log("Response from API:", data);
     console.log("Predicted label:", data.gesture_name);
+
+
+    // Map the gesture names to the corresponding actions
+    if( data.gesture_name === "like") {
+      return "up"; // Stop & wait for the next gesture
+    } else if (data.gesture_name === "dislike") {
+      return "down"; // Stop & wait for the next gesture
+    }else if (data.gesture_name === "stop") {
+      return "left"; // Stop & wait for the next gesture
+    } else if (data.gesture_name === "palm") {
+      return "right"; // Stop & wait for the next gesture
+    }else{
+      return null; // Stop & wait for the next gesture
+    }
+
     return data.prediction;
   } catch (error) {
     console.error("Fetch failed:", error);
