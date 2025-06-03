@@ -8,6 +8,7 @@ function flattenLandmarks(landmarks) {
     flattened[`z${i + 1}`] = landmarks[i].z;
   }
   return flattened;
+  console.log("Flattened landmarks:", flattened);
 }
 
 async function getPredictedLabel(processed_t) {
