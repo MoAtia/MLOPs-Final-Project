@@ -1,23 +1,10 @@
-// async function getPredictedLabel(processed_t) {
-//   // TODO: Call your model's api here
-//   // and return the predicted label
-//   // Possible labels: "up", "down", "left", "right", null
-//   // null means stop & wait for the next gesture
-//   // For now, we will return a random label
-//   const labels = ["up", "down", "left", "right"];
-//   const randomIndex = Math.floor(Math.random() * labels.length);
-//   const randomLabel = labels[randomIndex];
-//   console.log("Predicted label:", randomLabel);
-//   return randomLabel;
-// }
 function flattenLandmarks(landmarks) {
   const flattened = {};
   for (let i = 0; i < landmarks.length; i++) {
-    flattened[`x${i + 1}`] = landmarks[i].x;
-    flattened[`y${i + 1}`] = landmarks[i].y;
-    flattened[`z${i + 1}`] = landmarks[i].z;
+    flattened['x${i + 1}'] = landmarks[i].x;
+    flattened['y${i + 1}'] = landmarks[i].y;
+    flattened['z${i + 1}'] = landmarks[i].z;
   }
-  // console.log(JSON.stringify(flattened))
   return flattened;
 }
 
@@ -25,8 +12,8 @@ async function getPredictedLabel(processed_t) {
   try {
     // ✅ Flatten the landmarks before sending
     const formattedInput = flattenLandmarks(processed_t);
-
-    const response = await fetch("https://maze-game-backend-production.up.railway.app/predict", {
+    
+    const response = await fetch("http://54.234.11.240/predict", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,8 +27,8 @@ async function getPredictedLabel(processed_t) {
     }
 
     const data = await response.json();
-    console.log("Response from API:", data);
-    console.log("Predicted label:", data.gesture_name);
+    // console.log("Response from API:", data);
+    // console.log("Predicted label:", data.gesture_name);
 
 
     // Map the gesture names to the corresponding actions
@@ -49,15 +36,15 @@ async function getPredictedLabel(processed_t) {
       return "up"; // Stop & wait for the next gesture
     } else if (data.gesture_name === "dislike") {
       return "down"; // Stop & wait for the next gesture
-    }else if (data.gesture_name === "stop") {
+    }else if (data.gesture_name === "four") {
       return "left"; // Stop & wait for the next gesture
-    } else if (data.gesture_name === "palm") {
+    } else if (data.gesture_name === "fist") {
       return "right"; // Stop & wait for the next gesture
     }else{
       return null; // Stop & wait for the next gesture
     }
 
-    return data.prediction;
+    // return data.prediction;
   } catch (error) {
     console.error("Fetch failed:", error);
     return null;
